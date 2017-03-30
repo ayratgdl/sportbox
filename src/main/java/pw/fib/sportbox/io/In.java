@@ -7,19 +7,19 @@ import java.util.StringTokenizer;
  * @author ayratgdl
  * @date 26.03.16
  */
-public class StreamIn {
+public class In {
     private BufferedReader reader;
     StringTokenizer tokener;
 
-    public StreamIn(BufferedReader reader) {
+    public In(BufferedReader reader) {
         this.reader = reader;
     }
 
-    public StreamIn(Reader reader) {
+    public In(Reader reader) {
         this.reader = new BufferedReader(reader);
     }
 
-    public StreamIn(InputStream in) {
+    public In(InputStream in) {
         reader = new BufferedReader(new InputStreamReader(in));
     }
 

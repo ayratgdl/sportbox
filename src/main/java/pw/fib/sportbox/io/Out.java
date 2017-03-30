@@ -6,23 +6,23 @@ import java.io.*;
  * @author ayratgdl
  * @date 26.03.16
  */
-public class StreamOut {
+public class Out {
     private BufferedWriter writer;
     private boolean isEmptyLine = true;
 
-    public StreamOut(BufferedWriter writer) {
+    public Out(BufferedWriter writer) {
         this.writer = writer;
     }
 
-    public StreamOut(Writer writer) {
+    public Out(Writer writer) {
         this.writer = new BufferedWriter(writer);
     }
 
-    public StreamOut(OutputStream out) {
+    public Out(OutputStream out) {
         this.writer = new BufferedWriter(new OutputStreamWriter(out));
     }
 
-    private StreamOut write(String str) {
+    private Out write(String str) {
         try {
             if (!isEmptyLine)
                 writer.write(" ");
@@ -35,7 +35,7 @@ public class StreamOut {
         }
     }
 
-    public StreamOut ln() {
+    public Out ln() {
         try {
             writer.newLine();
             writer.flush();
@@ -46,37 +46,37 @@ public class StreamOut {
         }
     }
 
-    public StreamOut write(Object obj) {
+    public Out write(Object obj) {
         return write(obj.toString());
     }
 
-    public StreamOut write(int num) {
+    public Out write(int num) {
         return write(Integer.toString(num));
     }
 
-    public StreamOut write(long num) {
+    public Out write(long num) {
         return write(Long.toString(num));
     }
 
-    public StreamOut write(Object[] objs) {
+    public Out write(Object[] objs) {
         for (Object obj : objs)
             write(obj);
         return this;
     }
 
-    public <T> StreamOut write(Iterable<T> iter) {
+    public <T> Out write(Iterable<T> iter) {
         for (T obj : iter)
             write(obj);
         return this;
     }
 
-    public StreamOut write(int[] nums) {
+    public Out write(int[] nums) {
         for (int num : nums)
             write(num);
         return this;
     }
 
-    public StreamOut write(long[] nums) {
+    public Out write(long[] nums) {
         for (long num : nums)
             write(num);
         return this;
