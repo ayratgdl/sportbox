@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
  * @author ayratgdl
  * @date 26.03.16
  */
-public class StreamIn implements In {
+public class StreamIn {
     private BufferedReader reader;
     StringTokenizer tokener;
 
@@ -23,7 +23,10 @@ public class StreamIn implements In {
         reader = new BufferedReader(new InputStreamReader(in));
     }
 
-    @Override
+    public int int1() {
+        return Integer.parseInt(word());
+    }
+
     public String word() {
         try {
             if (tokener == null || !tokener.hasMoreTokens())
@@ -34,17 +37,10 @@ public class StreamIn implements In {
         }
     }
 
-    @Override
-    public int int1() {
-        return Integer.parseInt(word());
-    }
-
-    @Override
     public long long1() {
         return Long.parseLong(word());
     }
 
-    @Override
     public String[] words(int n) {
         String[] result = new String[n];
         for (int i = 0; i < n; i++)
@@ -52,7 +48,6 @@ public class StreamIn implements In {
         return result;
     }
 
-    @Override
     public int[] ints(int n) {
         int[] result = new int[n];
         for (int i = 0; i < n; i++)
@@ -60,7 +55,6 @@ public class StreamIn implements In {
         return result;
     }
 
-    @Override
     public long[] longs(int n) {
         long[] result = new long[n];
         for (int i = 0; i < n; i++)

@@ -6,7 +6,7 @@ import java.io.*;
  * @author ayratgdl
  * @date 26.03.16
  */
-public class StreamOut implements Out {
+public class StreamOut {
     private BufferedWriter writer;
     private boolean isEmptyLine = true;
 
@@ -22,7 +22,7 @@ public class StreamOut implements Out {
         this.writer = new BufferedWriter(new OutputStreamWriter(out));
     }
 
-    private Out write(String str) {
+    private StreamOut write(String str) {
         try {
             if (!isEmptyLine)
                 writer.write(" ");
@@ -35,8 +35,7 @@ public class StreamOut implements Out {
         }
     }
 
-    @Override
-    public Out ln() {
+    public StreamOut ln() {
         try {
             writer.newLine();
             writer.flush();
@@ -47,50 +46,39 @@ public class StreamOut implements Out {
         }
     }
 
-    @Override
-    public Out write(Object obj) {
+    public StreamOut write(Object obj) {
         return write(obj.toString());
     }
 
-    @Override
-    public Out write(int num) {
+    public StreamOut write(int num) {
         return write(Integer.toString(num));
     }
 
-    @Override
-    public Out write(long num) {
+    public StreamOut write(long num) {
         return write(Long.toString(num));
     }
 
-    @Override
-    public Out write(Object[] objs) {
+    public StreamOut write(Object[] objs) {
         for (Object obj : objs)
             write(obj);
         return this;
     }
 
-    @Override
-    public <T> Out write(Iterable<T> iter) {
+    public <T> StreamOut write(Iterable<T> iter) {
         for (T obj : iter)
             write(obj);
         return this;
     }
 
-    @Override
-    public Out write(int[] nums) {
+    public StreamOut write(int[] nums) {
         for (int num : nums)
             write(num);
         return this;
     }
 
-    @Override
-    public Out write(long[] nums) {
+    public StreamOut write(long[] nums) {
         for (long num : nums)
             write(num);
         return this;
-    }
-
-    protected Writer getBaseWriter() {
-        return writer;
     }
 }
