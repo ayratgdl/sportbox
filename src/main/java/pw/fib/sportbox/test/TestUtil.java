@@ -1,9 +1,10 @@
-package pw.fib.sportbox;
+package pw.fib.sportbox.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Random;
 
 /**
  * @author ayratgdl
@@ -23,5 +24,16 @@ public class TestUtil {
 
     public static String outputContent() {
         return out.toString();
+    }
+
+    public static String generateString(int count) {
+        StringBuilder result = new StringBuilder();
+        Random random = new Random();
+        while (count-- > 0) {
+            int offset = random.nextInt(26);
+            char character = (char) ('a' + offset);
+            result.append(character);
+        }
+        return result.toString();
     }
 }
